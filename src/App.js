@@ -4,10 +4,7 @@ function App() {
   return (
     <div className="container">
       <div className="welcome">
-        Welcome to
-        <h1>
-            Sana Warnings
-        </h1>
+        <img src='sana-warnings-logos_transparent.png'/>
       </div>
     </div>
   );
