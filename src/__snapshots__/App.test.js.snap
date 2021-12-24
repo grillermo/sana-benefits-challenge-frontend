@@ -4,13 +4,9 @@ exports[`App renders successfully 1`] = `
 <div
   className="container"
 >
-  <div
-    className="welcome"
-  >
-    Welcome to
-    <h1>
-      Sana Warnings
-    </h1>
-  </div>
+  <Route
+    component={[Function]}
+    path="/"
+  />
 </div>
 `;

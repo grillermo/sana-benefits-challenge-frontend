@@ -1,11 +1,12 @@
 import './App.css';
 
+import { Route } from "wouter";
+import Welcome from './pages/welcome'
+
 function App() {
   return (
     <div className="container">
-      <div className="welcome">
-        <img src='sana-warnings-logos_transparent.png'/>
-      </div>
+      <Route path="/" component={Welcome} />
     </div>
   );
 }
