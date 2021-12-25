@@ -5,9 +5,9 @@ import Welcome from './pages/welcome'
 
 function App() {
   return (
-    <div className="container">
+    <>
       <Route path="/" component={Welcome} />
-    </div>
+    </>
   );
 }
 
