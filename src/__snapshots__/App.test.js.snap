@@ -17,5 +17,9 @@ exports[`App renders successfully 1`] = `
     component={[Function]}
     path="/"
   />
+  <Route
+    component={[Function]}
+    path="/sign_up"
+  />
 </ContextProvider>
 `;
