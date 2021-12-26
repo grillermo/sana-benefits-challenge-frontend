@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInFormContainer matches the snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <label>
+    email:
+    <input
+      autoComplete="username"
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="joe@google.com"
+      type="email"
+      value=""
+    />
+  </label>
+  <label>
+    password:
+    <input
+      autoComplete="current-password"
+      name="password"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="*******"
+      type="password"
+      value=""
+    />
+  </label>
+  <button
+    disabled={false}
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+`;
