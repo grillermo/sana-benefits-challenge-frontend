@@ -1,3 +1,3 @@
-import { signUp } from './apiClient';
+import { signUp, signIn } from './apiClient';
 
-export { signUp }
+export { signUp, signIn }
