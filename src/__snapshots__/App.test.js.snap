@@ -27,6 +27,10 @@ exports[`App renders successfully 1`] = `
   />
   <Route
     component={[Function]}
+    path="/sign_out"
+  />
+  <Route
+    component={[Function]}
     path="/configuration"
   />
 </ContextProvider>
