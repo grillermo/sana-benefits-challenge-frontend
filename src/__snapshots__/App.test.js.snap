@@ -1,10 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App renders successfully 1`] = `
-<Fragment>
+<ContextProvider
+  value={
+    Object {
+      "dispatch": [Function],
+      "state": Object {
+        "isAuthenticated": false,
+        "token": null,
+        "user": null,
+      },
+    }
+  }
+>
   <Route
     component={[Function]}
     path="/"
   />
-</Fragment>
+</ContextProvider>
 `;
