@@ -6,6 +6,9 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import SignOut from './pages/SignOut'
 import Configuration from './pages/Configuration'
+
+import MenuBar from './components/MenuBar'
+
 import AuthContext from './contextProviders/authContext'
 import AuthReducer from './reducers/AuthReducer'
 
@@ -21,6 +24,7 @@ function App() {
         dispatch
       }}
     >
+      <MenuBar/>
       <Route path="/" component={Welcome} />
       <Route path="/sign_up" component={SignUp} />
       <Route path="/sign_in" component={SignIn} />

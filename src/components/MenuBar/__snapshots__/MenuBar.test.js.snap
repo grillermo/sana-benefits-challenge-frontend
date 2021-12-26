@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuBar signed in user matches the snapshot 1`] = `
+<nav>
+  <ul>
+    <li>
+      Sana Warnings
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a
+        href="/sign_out"
+        onClick={[Function]}
+        to={null}
+      >
+         Sign out
+      </a>
+    </li>
+  </ul>
+</nav>
+`;
+
+exports[`MenuBar signed out user matches the snapshot 1`] = `
+<nav>
+  <ul>
+    <li>
+      Sana Warnings
+    </li>
+  </ul>
+  <ul>
+    Array [
+      <li>
+        <a
+          href="/sign_up"
+          onClick={[Function]}
+          to={null}
+        >
+          Sign up
+        </a>
+      </li>,
+      <li>
+        <a
+          href="/sign_in"
+          onClick={[Function]}
+          to={null}
+        >
+          Sign in
+        </a>
+      </li>,
+    ]
+  </ul>
+</nav>
+`;
