@@ -1,3 +1,3 @@
-import { signUp, signIn } from './apiClient';
+import { signUp, signIn, getAQIWarning } from './apiClient';
 
-export { signUp, signIn }
+export { signUp, signIn, getAQIWarning }

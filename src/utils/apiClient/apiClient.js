@@ -56,3 +56,20 @@ export function signIn(data) {
     .catch(handleError)
 }
 
+function signedInClientConfig() { 
+  const jwt = localStorage.getItem('token')
+
+  return ({
+    baseURL: API_URL,
+    timeout: 1000,
+    headers: {
+      'Authorization': 'Bearer '+jwt 
+    }
+  })
+}
+
+export function getAQIWarning() {
+  return axios.get('aqi_warning', signedInClientConfig())
+              .then((response) => (response.data))
+              .catch(handleError)
+}
