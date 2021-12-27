@@ -2,9 +2,12 @@ import React from "react";
 import { mount } from 'enzyme';
 import {render, screen, waitFor} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import axios from 'axios';
 
-import RegistrationFormContainer from './RegistrationFormContainer'
+import RegistrationFormContainer, { handleSubmit } from './RegistrationFormContainer'
 import AuthContext from '../../contextProviders/authContext'
+
+jest.mock("axios")
 
 describe('RegistrationFormContainer', () => {
   it('matches the snapshot', async () => {
@@ -22,9 +25,28 @@ describe('RegistrationFormContainer', () => {
   });
 
   describe('handleSubmit', () => {
+    // arguments
+    const values = {}
+    const setSubmitting = jest.fn()
+    const authDispatch = jest.fn()
+    const setLocation = jest.fn()
+    const user = { id: 1, email: "email@domain.com" }
+    const token = 'eyJhbGciOiJIUzI1...'
+
     beforeEach(() => {
-      jest.spyOn(window, 'alert').mockImplementation(() => {})
+      jest.clearAllMocks()
+
+      let mockedResponse = {
+        data: user,
+        status: 200,
+        headers: {
+          authorization: 'Bearer '+token
+        },
+      }
+
+      axios.post.mockImplementationOnce(() => Promise.resolve(mockedResponse))
     })
+
 
     it('calls the signUp', async () => {
       const handleSubmit = jest.fn()
@@ -47,7 +69,31 @@ describe('RegistrationFormContainer', () => {
       await waitFor(() =>
         expect(handleSubmit).toHaveBeenCalled()
       )
-    });
+    })
+
+    it('sets the submitting flag', async () => {
+      await handleSubmit(values, setSubmitting, authDispatch, setLocation)
+
+      expect(setSubmitting).toHaveBeenCalledWith(true);
+    })
+
+    it('signs in the user', async () => {
+      await handleSubmit(values, setSubmitting, authDispatch, setLocation)
+
+      expect(authDispatch).toHaveBeenCalledWith({
+        type: 'SIGNIN',
+        payload: {
+          token: token,
+          user: user,
+        }
+      })
+    })
+
+    it('redirecs the user to configuration', async () => {
+      await handleSubmit(values, setSubmitting, authDispatch, setLocation)
+
+      expect(setLocation).toHaveBeenCalledWith('/configuration')
+    })
   })
 })
 
