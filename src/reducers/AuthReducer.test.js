@@ -10,11 +10,6 @@ describe('AuthReducer', () => {
   }
 
   describe('SIGNIN action', () => {
-    beforeEach(() => {
-      jest.spyOn(window.localStorage.__proto__, 'setItem')
-      window.localStorage.__proto__.setItem = jest.fn()
-    })
-
     const action = {
       type: 'SIGNIN',
       payload: {
@@ -38,19 +33,12 @@ describe('AuthReducer', () => {
     it('sets the user and token on the local storage', () => {
       const state = reducer({},action)
 
-      expect(localStorage.setItem.mock.calls).toEqual([
-        ['user', JSON.stringify(user)],
-        ['token', token],
-      ])
+      expect(localStorage.getItem('user')).toEqual(JSON.stringify(user))
+      expect(localStorage.getItem('token')).toEqual(token)
     })
   })
 
   describe('SIGNOUT action', () => {
-    beforeEach(() => {
-      jest.spyOn(window.localStorage.__proto__, 'clear')
-      window.localStorage.__proto__.clear = jest.fn()
-    })
-
     const action = {
       type: 'SIGNOUT',
     };
@@ -58,7 +46,8 @@ describe('AuthReducer', () => {
     it('clears the local storage', async () => {
       const state = reducer({},action)
       
-      expect(localStorage.clear).toHaveBeenCalledTimes(1)
+      expect(localStorage.getItem('user')).toEqual(undefined)
+      expect(localStorage.getItem('token')).toEqual(undefined)
     })
   })
 })

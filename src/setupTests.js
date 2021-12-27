@@ -2,6 +2,8 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
+import './testHelpers/localstorageMock';
+
 import {createSerializer} from 'enzyme-to-json';
 
 import Enzyme from 'enzyme';

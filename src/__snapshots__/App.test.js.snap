@@ -7,7 +7,7 @@ exports[`App renders successfully 1`] = `
       "dispatch": [Function],
       "state": Object {
         "isAuthenticated": false,
-        "token": null,
+        "token": undefined,
         "user": null,
       },
     }
