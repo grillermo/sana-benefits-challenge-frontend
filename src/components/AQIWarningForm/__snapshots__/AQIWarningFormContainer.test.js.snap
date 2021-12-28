@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AQIWarningFormContainer a previously created aqiWarning exists matches the snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="AQIWarningContainer"
+      >
+        <form>
+          <label>
+            Your location:
+            <div
+              class="geosuggest"
+            >
+              <div
+                class="geosuggest__input-wrapper"
+              >
+                <input
+                  aria-expanded="false"
+                  aria-owns="geosuggest__list"
+                  autocomplete="nope"
+                  class="geosuggest__input"
+                  id="geosuggest__input"
+                  name="location"
+                  placeholder="Beverly hills"
+                  role="combobox"
+                  tabindex="0"
+                  type="text"
+                  value="Texas"
+                />
+              </div>
+              <div
+                class="geosuggest__suggests-wrapper"
+              >
+                <ul
+                  class="geosuggest__suggests geosuggest__suggests--hidden"
+                  id="geosuggest__list"
+                  role="listbox"
+                />
+              </div>
+            </div>
+          </label>
+          <label>
+            Your warning threshold:
+            <input
+              name="threshold"
+              placeholder="100"
+              type="number"
+              value="70"
+            />
+          </label>
+          <button
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+        <div
+          class="airQualityWidget danger"
+        >
+          <h1>
+            0
+          </h1>
+          <strong>
+            current level
+          </strong>
+          <p>
+            Dangerous
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="AQIWarningContainer"
+    >
+      <form>
+        <label>
+          Your location:
+          <div
+            class="geosuggest"
+          >
+            <div
+              class="geosuggest__input-wrapper"
+            >
+              <input
+                aria-expanded="false"
+                aria-owns="geosuggest__list"
+                autocomplete="nope"
+                class="geosuggest__input"
+                id="geosuggest__input"
+                name="location"
+                placeholder="Beverly hills"
+                role="combobox"
+                tabindex="0"
+                type="text"
+                value="Texas"
+              />
+            </div>
+            <div
+              class="geosuggest__suggests-wrapper"
+            >
+              <ul
+                class="geosuggest__suggests geosuggest__suggests--hidden"
+                id="geosuggest__list"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </label>
+        <label>
+          Your warning threshold:
+          <input
+            name="threshold"
+            placeholder="100"
+            type="number"
+            value="70"
+          />
+        </label>
+        <button
+          type="submit"
+        >
+          Save
+        </button>
+      </form>
+      <div
+        class="airQualityWidget danger"
+      >
+        <h1>
+          0
+        </h1>
+        <strong>
+          current level
+        </strong>
+        <p>
+          Dangerous
+        </p>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`AQIWarningFormContainer the user does not have an aqiWarning matches the snapshot 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="AQIWarningContainer"
+      >
+        <form>
+          <label>
+            Your location:
+            <div
+              class="geosuggest"
+            >
+              <div
+                class="geosuggest__input-wrapper"
+              >
+                <input
+                  aria-expanded="false"
+                  aria-owns="geosuggest__list"
+                  autocomplete="nope"
+                  class="geosuggest__input"
+                  id="geosuggest__input"
+                  name="location"
+                  placeholder="Beverly hills"
+                  role="combobox"
+                  tabindex="0"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="geosuggest__suggests-wrapper"
+              >
+                <ul
+                  class="geosuggest__suggests geosuggest__suggests--hidden"
+                  id="geosuggest__list"
+                  role="listbox"
+                />
+              </div>
+            </div>
+          </label>
+          <label>
+            Your warning threshold:
+            <input
+              name="threshold"
+              placeholder="100"
+              type="number"
+              value="0"
+            />
+          </label>
+          <button
+            type="submit"
+          >
+            Save
+          </button>
+        </form>
+        <div
+          class="airQualityWidget danger"
+        >
+          <h1>
+            0
+          </h1>
+          <strong>
+            current level
+          </strong>
+          <p>
+            Dangerous
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="AQIWarningContainer"
+    >
+      <form>
+        <label>
+          Your location:
+          <div
+            class="geosuggest"
+          >
+            <div
+              class="geosuggest__input-wrapper"
+            >
+              <input
+                aria-expanded="false"
+                aria-owns="geosuggest__list"
+                autocomplete="nope"
+                class="geosuggest__input"
+                id="geosuggest__input"
+                name="location"
+                placeholder="Beverly hills"
+                role="combobox"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="geosuggest__suggests-wrapper"
+            >
+              <ul
+                class="geosuggest__suggests geosuggest__suggests--hidden"
+                id="geosuggest__list"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </label>
+        <label>
+          Your warning threshold:
+          <input
+            name="threshold"
+            placeholder="100"
+            type="number"
+            value="0"
+          />
+        </label>
+        <button
+          type="submit"
+        >
+          Save
+        </button>
+      </form>
+      <div
+        class="airQualityWidget danger"
+      >
+        <h1>
+          0
+        </h1>
+        <strong>
+          current level
+        </strong>
+        <p>
+          Dangerous
+        </p>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
