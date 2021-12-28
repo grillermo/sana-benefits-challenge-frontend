@@ -1,0 +1,21 @@
+.airQualityWidget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+}
+
+.airQualityWidget.ok {
+  background-color: green;
+}
+
+.airQualityWidget.disabled {
+  background-color: gray;
+}
+
+.airQualityWidget.danger {
+  background-color: red;
+}

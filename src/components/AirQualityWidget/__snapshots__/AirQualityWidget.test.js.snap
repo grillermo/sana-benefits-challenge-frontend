@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AirQualityWidget  with current level less than threshold renders successfully 1`] = `
+<div
+  className="airQualityWidget danger"
+>
+  <h1>
+    70
+  </h1>
+  <strong>
+    current level
+  </strong>
+  <p>
+    Dangerous
+  </p>
+</div>
+`;
+
+exports[`AirQualityWidget  with current level more than threshold renders successfully 1`] = `
+<div
+  className="airQualityWidget ok"
+>
+  <h1>
+    100
+  </h1>
+  <strong>
+    current level
+  </strong>
+  <p>
+    All good
+  </p>
+</div>
+`;
+
+exports[`AirQualityWidget  with empty values as props renders successfully 1`] = `
+<div
+  className="airQualityWidget disabled"
+>
+  <h1>
+    loading...
+  </h1>
+  <strong>
+    current level
+  </strong>
+  <p>
+    loading...
+  </p>
+</div>
+`;
