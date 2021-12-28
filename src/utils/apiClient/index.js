@@ -1,3 +1,3 @@
-import { signUp, signIn, getAQIWarning, saveAQIWarning } from './apiClient';
+import { signUp, signIn, getAQIWarning, saveAQIWarning, getAQI } from './apiClient';
 
-export { signUp, signIn, getAQIWarning, saveAQIWarning }
+export { signUp, signIn, getAQIWarning, saveAQIWarning, getAQI }

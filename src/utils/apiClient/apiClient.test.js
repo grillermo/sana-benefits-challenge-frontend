@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-import { signUp, signIn, getAQIWarning, saveAQIWarning } from './apiClient'
-import { API_URL } from '../../constants'
+import { signUp, signIn, getAQIWarning, saveAQIWarning, getAQI } from './apiClient'
+import { API_URL, AQI_TOKEN } from '../../constants'
 
 jest.mock("axios")
 
@@ -27,7 +27,7 @@ describe('apiClient', () => {
         axios.post.mockImplementationOnce(() => Promise.resolve(mockedResponse))
       })
 
-      it('does a post request', async () => {
+      it('does a POST request', async () => {
         const result = await signUp({email: user.email, password: password})
 
         expect(axios.post).toHaveBeenCalledTimes(1)
@@ -103,7 +103,7 @@ describe('apiClient', () => {
         axios.post.mockImplementationOnce(() => Promise.resolve(mockedResponse))
       })
 
-      it('does a post request', async () => {
+      it('does a POST request', async () => {
         const result = await signIn({email: user.email, password: password})
 
         expect(axios.post).toHaveBeenCalledTimes(1)
@@ -162,7 +162,7 @@ describe('apiClient', () => {
       let mockedResponse
 
       beforeEach(() => {
-        window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImpAai5jb20iLCJzdWIiOiIxOCIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTY0MDU3ODE3MywiZXhwIjoiMTY0MTQ0MjE3MyIsImp0aSI6IjE2NTZhYzY0LWNhNmQtNDZlNi1hMWJjLTIxNWU2ZmNkY2YwMyJ9.QjdhCpmHww9j_Tby3ibFYqORYk9icRq9JiTnQyvp4eE')
+        window.localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiJ9')
 
         mockedResponse = {
           data: {
@@ -177,7 +177,11 @@ describe('apiClient', () => {
         axios.get.mockImplementationOnce(() => Promise.resolve(mockedResponse))
       })
 
-      it('should return an aqi_warning', async () => {
+      afterEach(() => {
+        window.localStorage.clear()
+      })
+
+      it('should return an aqiWarning', async () => {
         const result = await getAQIWarning()
 
         expect(result).toEqual(mockedResponse.data)
@@ -214,10 +218,12 @@ describe('apiClient', () => {
   describe('saveAQIWarning', () => {
     const jwt = 'eyJhbGciOiJIUzI1NiJ9'
 
+    // The token is needed for signed in calls
     beforeEach(() => {
       window.localStorage.setItem('token', jwt)
     })
 
+    // The token is needed for signed in calls
     afterEach(() => {
       window.localStorage.clear()
     })
@@ -237,7 +243,7 @@ describe('apiClient', () => {
         axios.post.mockImplementationOnce(() => Promise.resolve(mockedResponse))
       })
 
-      it('does a post request', async () => {
+      it('does a POST request', async () => {
         const result = await saveAQIWarning(aqiWarning)
 
         expect(axios.post).toHaveBeenCalledTimes(1)
@@ -267,6 +273,65 @@ describe('apiClient', () => {
 
       beforeEach(() => {
         errorMessage =  "Threshold must be greater than 0"
+        error = new Error()
+        error.response = { data: { message: errorMessage } }
+
+        axios.post.mockImplementationOnce(() => Promise.reject(error))
+      })
+
+      it('display the error to the user', async () => {
+        jest.spyOn(window, 'alert').mockImplementation(() => {})
+
+        await saveAQIWarning({}).catch(function(error) { })
+
+        expect(window.alert).toBeCalledWith('Sorry there was an error: '+errorMessage)
+      })
+
+      it('returns a rejected promise', async () => {
+        await saveAQIWarning({}).catch(function(error) {
+          expect(error).toEqual(errorMessage)
+        })
+      })
+    })
+  })
+
+  describe('getAQI', () => {
+    const latitude  = '19.002529441654687'
+    const longitude = '-98.26751911537335'
+
+    describe('when API call is successful', () => {
+      beforeEach(() => {
+        const mockedResponse = {
+          data: {
+            data: {
+              aqi: 78
+            }
+          }
+        }
+
+        axios.get.mockImplementationOnce(() => Promise.resolve(mockedResponse))
+      })
+
+      it('does a GET request', async () => {
+        const result = await getAQI(latitude, longitude)
+
+        expect(axios.get).toHaveBeenCalledTimes(1)
+      })
+
+      it('calls the api url with the data wrapped in a aqi_warning key', async () => {
+        const result = await getAQI(latitude, longitude)
+
+        expect(axios.get).toHaveBeenCalledWith(
+          `https://api.waqi.info/feed/geo:${latitude};${longitude}/?token=${AQI_TOKEN}`,
+        )
+      })
+    })
+
+    describe('an error was produced', () => {
+      let errorMessage, error
+
+      beforeEach(() => {
+        errorMessage =  "Invalid token"
         error = new Error()
         error.response = { data: { message: errorMessage } }
 

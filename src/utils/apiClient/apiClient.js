@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { API_URL } from '../../constants'
+import { API_URL, AQI_TOKEN } from '../../constants'
 
 function handleError(error) {
   let errorMessage
@@ -81,5 +81,13 @@ export function saveAQIWarning(data) {
                 },
                 signedInClientConfig()
               )
+              .catch(handleError)
+}
+
+export function getAQI(latitude, longitude) {
+  const url = `https://api.waqi.info/feed/geo:${latitude};${longitude}/?token=${AQI_TOKEN}`
+
+  return axios.get(url)
+              .then((response) => (response.data.data.aqi))
               .catch(handleError)
 }
