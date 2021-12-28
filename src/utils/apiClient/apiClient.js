@@ -73,3 +73,13 @@ export function getAQIWarning() {
               .then((response) => (response.data))
               .catch(handleError)
 }
+
+export function saveAQIWarning(data) {
+  return axios.post('aqi_warning',
+                {
+                  aqi_warning: data
+                },
+                signedInClientConfig()
+              )
+              .catch(handleError)
+}

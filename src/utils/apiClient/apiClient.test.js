@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { signUp, signIn, getAQIWarning } from './apiClient'
+import { signUp, signIn, getAQIWarning, saveAQIWarning } from './apiClient'
 import { API_URL } from '../../constants'
 
 jest.mock("axios")
@@ -205,6 +205,84 @@ describe('apiClient', () => {
 
       it('returns a rejected promise', async () => {
         await signIn({email: '', password: ''}).catch(function(error) {
+          expect(error).toEqual(errorMessage)
+        })
+      })
+    })
+  })
+
+  describe('saveAQIWarning', () => {
+    const jwt = 'eyJhbGciOiJIUzI1NiJ9'
+
+    beforeEach(() => {
+      window.localStorage.setItem('token', jwt)
+    })
+
+    afterEach(() => {
+      window.localStorage.clear()
+    })
+
+    describe('when API call is successful', () => {
+      let aqiWarning = {
+        location: 'Texas',
+        latitude: '19.002529441654687',
+        longitude: '-98.26751911537335',
+        threshold: 10,
+      }
+
+      beforeEach(() => {
+        // We are not using the response so it can be empty
+        const mockedResponse = { }
+
+        axios.post.mockImplementationOnce(() => Promise.resolve(mockedResponse))
+      })
+
+      it('does a post request', async () => {
+        const result = await saveAQIWarning(aqiWarning)
+
+        expect(axios.post).toHaveBeenCalledTimes(1)
+      })
+
+      it('calls the api url with the data wrapped in a aqi_warning key', async () => {
+        const result = await saveAQIWarning(aqiWarning)
+
+        expect(axios.post).toHaveBeenCalledWith(
+          'aqi_warning',
+          {
+            aqi_warning: aqiWarning
+          },
+          {
+            baseURL: API_URL,
+            timeout: 1000,
+            headers: {
+              'Authorization': 'Bearer '+jwt
+            }
+          }
+        )
+      })
+    })
+
+    describe('an error was produced', () => {
+      let errorMessage, error
+
+      beforeEach(() => {
+        errorMessage =  "Threshold must be greater than 0"
+        error = new Error()
+        error.response = { data: { message: errorMessage } }
+
+        axios.post.mockImplementationOnce(() => Promise.reject(error))
+      })
+
+      it('display the error to the user', async () => {
+        jest.spyOn(window, 'alert').mockImplementation(() => {})
+
+        await saveAQIWarning({}).catch(function(error) { })
+
+        expect(window.alert).toBeCalledWith('Sorry there was an error: '+errorMessage)
+      })
+
+      it('returns a rejected promise', async () => {
+        await saveAQIWarning({}).catch(function(error) {
           expect(error).toEqual(errorMessage)
         })
       })
